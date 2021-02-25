@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext, createContext } from 'react'
+import {ChallengesContext , ChallengesProvider} from '../contexts/ChallengesContext'
 import styles from '../styles/components/Countdown.module.css'
+
+
+let countdownTimeout: NodeJS.Timeout;
 
 export function Countdown() {
 
-  const [time, setTime] = useState(25 * 60);
-  const [active, setActive] = useState(false);
+  const { startNewChallenge } =  useContext(ChallengesContext)
+
+  const [time, setTime] = useState(0.1 * 60);
+  const [isActive, setIsActive] = useState(false);
+  const [hasFinished, setHasFinished] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -16,24 +23,33 @@ export function Countdown() {
   const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
 
   function startCountdown() {
+    setIsActive(true);
+  }
 
-    setActive(true);
+  function resetCountdown() {
 
+    clearTimeout(countdownTimeout);
+    setIsActive(false);
+    setTime(0.1* 60);
 
   }
 
   //o segundo parametro, no caso active indica que sempre que o valor de active mudar
   //ele vai executar o useEffect, no caso o comando que está dentro no {}, depois da =>
-  useEffect(()=>{
+  useEffect(() => {
 
-    if(active && time >0){
-       //aqui vai executar a função dentro de 1000 milesgundos 
-       //vai reduzir o time, que é declarado em 25*60 em 1 segundo
-      setTimeout(()=>{
+    if (isActive && time > 0) {
+      //aqui vai executar a função dentro de 1000 milesgundos 
+      //vai reduzir o time, que é declarado em 25*60 em 1 segundo
+      countdownTimeout = setTimeout(() => {
         setTime(time - 1)
-      },1000)
-    }     
-  },[active,time]) //executa quando muda o active e o time, ou seja sempre
+      }, 1000)
+    } else if (isActive && time == 0) {
+      setHasFinished(true);
+      setIsActive(false);
+      startNewChallenge();
+    }
+  }, [isActive, time]) //executa quando muda o active e o time, ou seja sempre
   //que baixa 1 segundos, executa
 
   return (
@@ -50,12 +66,38 @@ export function Countdown() {
           <span>{secondRight}</span>
         </div>
       </div>
-      <button
-        type="button"
-        className={styles.countdownButton}
-        onClick={startCountdown}>
-        Iniciar um Ciclo
+
+
+      {hasFinished ? (
+
+        <button
+          disabled
+
+          className={styles.countdownButton}
+        >
+          Ciclo Encerrado
         </button>
+      ) : (
+          <>
+            {isActive ? (
+              <button
+                type="button"
+                className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+                onClick={resetCountdown}>
+                Abandonar Ciclo
+              </button>
+            ) : (
+                <button
+                  type="button"
+                  className={styles.countdownButton}
+                  onClick={startCountdown}>
+                  Iniciar um Ciclo
+                </button>
+              )}
+          </>
+        )}
+
     </div>
+
   )
 }
