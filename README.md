@@ -23,10 +23,14 @@ O usuário pode iniciar ciclos de 25 minutos cada, onde ao final de cada ciclo s
 - ReactJS 
 - Next.js
 
+# Recursos
+- Context Api
+- Trabalho com Cookies
+
 # Como executar o projeto
 ```bash
 # clonar o repositório
-git clone https://github.com/4L1C3-R4BB1T/nlw4-moveit.git
+git clone https://github.com/jordaomoraes/nlw4React.git
 
 # entrar na pasta moveit
 cd moveit
