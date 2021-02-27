@@ -1,37 +1,31 @@
-## Welcome to GitHub Pages
+## moveit
 
-You can use the [editor on GitHub](https://github.com/jordaomoraes/nlw4React/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Sobre o projeto
+move.it é um projeto desenvolvido durante a 4ª **Next Level Week**, da [Rocketseat](https://rocketseat.com.br "Site da Rocketseat").
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+A aplicação se baseia na [Técnica Pomodoro](https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro "Página da Wikipédia"), um método de gerenciamento de tempo. 
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+O usuário pode iniciar ciclos de 25 minutos cada, onde ao final de cada ciclo será proposto um desafio que consiste em realizar um exercício. Pode-se escolher se falhou ou completou o desafio, que caso completado, receberá experiência podendo subir de level.
 
-```markdown
-Syntax highlighted code block
+# Tecnologias Utilizadas
+- HTML
+- CSS
+- ReactJS 
+- Next.js
 
-# Header 1
-## Header 2
-### Header 3
+# Como executar o projeto
+```bash
+# clonar o repositório
+git clone https://github.com/4L1C3-R4BB1T/nlw4-moveit.git
 
-- Bulleted
-- List
+# entrar na pasta moveit
+cd moveit
 
-1. Numbered
-2. List
+# instalação das dependências
+npm install
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# executar o projeto
+npm run dev
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jordaomoraes/nlw4React/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
