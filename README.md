@@ -1,5 +1,11 @@
+<p align="center">
+  <img src="https://github.com/jordaomoraes/nlw4React/blob/main/moveit-next/public/logo-full.svg" width="250px" />
+</p>
 
-# Conteúdo desenvolvido na NLW4 - 22 a 27 Fev de 2021.
+
+
+# Conteúdo Desenvolvido na NLW4 - 22 a 27 Fev de 2021.
+
 
 ## Sobre o projeto
 move.it é um projeto desenvolvido durante a 4ª **Next Level Week**, da [Rocketseat](https://rocketseat.com.br "Site da Rocketseat").
