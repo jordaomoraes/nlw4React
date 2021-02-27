@@ -1,14 +1,15 @@
 import { Children, createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { LevelUpModal } from "../components/LevelUpModal";
 import { ChallengesContext } from "./ChallengesContext";
 
 interface CountdownContextData {
- 
-  minutes :number,
-  seconds:number,
-  hasFinished :boolean,
-  isActive :boolean,
-  startCountdown : () => void,
-  resetCountdown : () => void,
+
+  minutes: number,
+  seconds: number,
+  hasFinished: boolean,
+  isActive: boolean,
+  startCountdown: () => void,
+  resetCountdown: () => void,
 }
 
 interface CountdownProvideProps {
@@ -25,7 +26,7 @@ export function CountdownProvider({ children }: CountdownProvideProps) {
 
   const { startNewChallenge } = useContext(ChallengesContext)
 
-  const [time, setTime] = useState(0.1 * 60);
+  const [time, setTime] = useState(25 * 60);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
 
@@ -40,7 +41,7 @@ export function CountdownProvider({ children }: CountdownProvideProps) {
 
     clearTimeout(countdownTimeout);
     setIsActive(false);
-    setTime(0.1 * 60);
+    setTime(25 * 60);
     setHasFinished(false);
 
   }
@@ -63,23 +64,19 @@ export function CountdownProvider({ children }: CountdownProvideProps) {
   }, [isActive, time]) //executa quando muda o active e o time, ou seja sempre
   //que baixa 1 segundos, executa
 
-
   return (
-
     <CountdownContext.Provider value={{
-
       minutes,
       seconds,
       hasFinished,
       isActive,
       startCountdown,
       resetCountdown,
-
-
     }}>
 
       {children}
 
+   
     </CountdownContext.Provider>
   )
 
